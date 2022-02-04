@@ -1,26 +1,12 @@
-# CS 6601: Artificial Intelligence - Assignment 2 - Search
+# Search
 
-## Setup
-
-Clone the repository and activate the Conda repository you created in Assignment 0:
-
-```
-git clone https://github.gatech.edu/omscs6601/assignment_2.git
-conda activate ai_env
-```
 
 
 ## Overview
 
 Search is an integral part of AI. It helps in problem solving across a wide variety of domains where a solution isn’t immediately clear.  You will implement several graph search algorithms with the goal of solving bi-directional and tri-directional search.
 
-### Submission
 
-All code you will edit is in the `submission.py` file, which will be submitted to Gradescope for grading. You are allowed **two submissions every thirty minutes**. In your Gradescope submission history, you can mark a certain submission as 'Active'.
-
-### The Files
-
-While you'll only have to edit and submit **__submission.py__**, there are a number of notable files:
 
 | File | Description |
 | ----:| :-----------|
@@ -36,7 +22,7 @@ While you'll only have to edit and submit **__submission.py__**, there are a num
 
 ## Resources
 
-* [Gradescope: Error Messages](https://docs.google.com/document/d/1hykYneVoV_JbwBjVz9ayFTA6Yr3pgw6JBvzrCgM0vyY/pub)
+
 * [Udacity Videos: Lesson 2, Search](https://gatech.instructure.com/courses/134646/modules)
 * [R&N slides on Uninformed Search](https://www.cc.gatech.edu/~thad/6601-gradAI-fall2015/chapter03-clean.pdf)
 * [Informed Search](https://www.cc.gatech.edu/~thad/6601-gradAI-fall2015/chapter04a.pdf)
@@ -60,18 +46,14 @@ Resources for bi-directional searches
 * [Piazza: Landmark Example](https://docs.google.com/document/d/1YEptGbSYUtu180MfvmrmA4B6X9ImdI4oOmLaaMRHiCA/pub)
 
 
-**_Please refrain from referring code/psuedocode from other resources aside from these._**
 
-## The Assignment
+## Desc
 
-Your task is to implement several informed search algorithms that will calculate a driving route between two points in Romania with a minimal time and space cost.
+The task is to implement several informed search algorithms that will calculate a driving route between two points in Romania with a minimal time and space cost.
 There is a `search_submission_tests.py` file to help you along the way. Your searches should be executed with minimal runtime and memory overhead.
 
 We will be using an undirected network representing a map of Romania (and an optional Atlanta graph used for the Race!).
 
-#### Grading
-
-Points for each section are awarded based on finding the correct path and by evaluating the number of nodes explored. To track the number of times a node is explored during the search, the ExplorableGraph wrapper is used on the networkx Graph class. Every time you process a node, by calling graph[node] or graph.neighbors(node), the count for that node increases by one. You will need to use one of these methods to add a node's neighbors to the search queue, just be careful not to call it unnecessarily throughout your code. We have created the graph.get_edge_weight(u, v) method to be used to access edge weights between two nodes, u and v. All other normal networkx Graph operations can be performed.  
 
 #### Visualizing the Atlanta graph:
 
@@ -79,44 +61,6 @@ The Atlanta graph is used in some later parts of this assignment. However, it is
 If you want to see how **_visualize_graph.py_** is used, take a look at the class TestBidirectionalSearch in **_search_submission_tests.py_**
 
 
-#### Frequently Asked Questions
-
-> * If start and goal are the same, you should return [].
-> * When nodes in the priority queue have the same priority value, break ties according to FIFO. Hint: A counter can be used to track when nodes enter the priority queue.
-> * Your priority queue implementation should allow for duplicate nodes to enter the queue.
-> * There is a little more to this when you get to tridirectional, so read those Notes especially carefully as well
-> * **Do not** use graph.explored_nodes for anything that you submit to Gradescope. This can be used for debugging, but you should not be calling this in your code. Please make sure you read the "grading" section above.
-> * **Do not** create a copy of the graph structure for any of the algorithms or compuations.
-> * If you are stuck, check out the resources! We recognize this is a hard assignment and tri-directional search is a more research-oriented topic than the other search algorithms. Many previous students have found it useful to go through the resources in this README if they are having difficulty understanding the algorithms. Hopefully they are of some use to you all as well! :)
-> * We have included the "Haversine" heuristic in the `search_submission_tests.py` file. All of the local tests on the Atlanta map use this method. For the race, you can use whatever you choose, but know that the Atlanta map positions are (latitude, longitude). If you would like to learn more about this formula, here is a link: https://en.wikipedia.org/wiki/Haversine_formula
-> * Make sure you clean up any changes/modifications/additions you make to the networkx graph structure before you exit the search function. Depending on your changes, the auto grader might face difficulties while testing. The best alternative is to create your own data structure(s).
-> * If you're having problems (exploring too many nodes) with your Breadth first search implementation, one thing many students have found useful is to re-watch the Canvas videos for an optimization trick mentioned.
-> * Most 'NoneType object ...' errors are because the path you return is not completely connected (a pair of successive nodes in the path are not connected). Or because the path variable itself is empty.
-> * Adding unit tests to your code may cause your submission to fail. It is best to comment them out when you submit.
-<!---
-* Individual tests can be run using the following:
-```python
-import search_submission_tests as tests
-tests.TestPriorityQueue().test_append_and_pop()
-```
-* For running the search tests, use this:
-``` python
-import search_submission_tests as tests
-testclass = tests.TestBasicSearch()
-testclass.setUp()
-testclass.test_bfs()
-```
--->
-
-
-#### Unit Tets
-
-We have provided two official unit test files, and one unofficially developed one that students have found useful. They are not complete, and these tests are not guaranteed to ensure full points on the autograder, but they should help in development. To run:
-```
-python search_submission_tests.py       # Basic tests, visualizes on Romania
-python search_submission_tests_grid.py  # Visualize search on grid
-python search_unit_tests.py             # Unofficial, checks for path correctness
-```
 
 ### Warmups
 We'll start by implementing some simpler optimization and search algorithms before the real exercises.
